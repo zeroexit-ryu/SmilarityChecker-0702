@@ -33,8 +33,12 @@ public:
 		}
 
 		if ((sameCountOfA == a.length()) && (sameCountOfB == b.length())) return 40;
+		int totalAlphaCount = a.length() + b.length();
+		int sameAlphaCount = sameCountOfA + sameCountOfB;
+
+		int score = static_cast<int>((40.0 * (static_cast<double>(sameAlphaCount) / static_cast<double>(totalAlphaCount))));
 		
-		return 0;
+		return score;
 	}
 };
 

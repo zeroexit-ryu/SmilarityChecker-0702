@@ -39,6 +39,16 @@ TEST_F(SimilarityFixture, SameDigitTest)
 	EXPECT_EQ(40, getDigitSimilarityScore("ASD", "DSA"));
 }
 
+TEST_F(SimilarityFixture, NoSameDigitTest)
+{
+	EXPECT_EQ(0, getDigitSimilarityScore("ABCDE", "FGHIJ"));
+}
+
+TEST_F(SimilarityFixture, SomeDigitSameTest)
+{
+	EXPECT_EQ(26, getDigitSimilarityScore("ABCDEF", "ABF"));
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
