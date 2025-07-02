@@ -18,6 +18,23 @@ public:
 		int gap = ::abs((int)(a.length() - b.length()));		
 		int score = static_cast<int>((1.0 - (static_cast<double>(gap) / static_cast<double>(shortStringLength))) * 60.0);
 		return score;
+	}	
+
+	int getDigitSimilarity(const std::string& a, const std::string& b) {
+		int sameCountOfA = 0;
+		int sameCountOfB = 0;
+
+		for (int i = 0; i < a.length(); ++i) {
+			if (b.find(a[i]) != -1) sameCountOfA++;
+		}
+
+		for (int i = 0; i < b.length(); ++i) {
+			if (a.find(b[i]) != -1) sameCountOfB++;
+		}
+
+		if ((sameCountOfA == a.length()) && (sameCountOfB == b.length())) return 40;
+		
+		return 0;
 	}
 };
 

@@ -8,6 +8,10 @@ public:
 		return sc.getSimilarity(a, b);
 	}
 
+	int getDigitSimilarityScore(std::string a, std::string b) {
+		return sc.getDigitSimilarity(a, b);
+	}
+
 };
 
 TEST_F(SimilarityFixture, SameLengthTest)
@@ -28,6 +32,11 @@ TEST_F(SimilarityFixture, SmallDiffTest1)
 TEST_F(SimilarityFixture, SmallDiffTest2)
 {
 	EXPECT_EQ(30, getSimilarityScore("AA", "AAE"));
+}
+
+TEST_F(SimilarityFixture, SameDigitTest)
+{
+	EXPECT_EQ(40, getDigitSimilarityScore("ASD", "DSA"));
 }
 
 int main() {
