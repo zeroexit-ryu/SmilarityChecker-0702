@@ -6,7 +6,7 @@
 
 class SimilarityChecker {
 public:
-	int getSimilarity(const std::string& a, const std::string& b) {
+	int getLengthSimilarity(const std::string& a, const std::string& b) {
 		if (a.length() == b.length()) return 60;
  		if (a.length() >= b.length() * 2) return 0;
 		if (a.length() * 2 <= b.length()) return 0;
