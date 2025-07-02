@@ -1,36 +1,33 @@
 #include "gmock/gmock.h"
 #include "SimilarityChecker.cpp"
 
-TEST(TS1, TC1)
-{
+class SimilarityFixture : public testing::Test {
+public:
 	SimilarityChecker sc;
-	int actual = sc.getSimilarity("ASD", "DSA");
-	
-	EXPECT_EQ(60, actual);
+	int getSimilarityScore(std::string a, std::string b) {
+		return sc.getSimilarity(a, b);
+	}
+
+};
+
+TEST_F(SimilarityFixture, SameLengthTest)
+{	
+	EXPECT_EQ(60, getSimilarityScore("ASD", "DSA"));
 }
 
-TEST(TS1, TC2)
+TEST_F(SimilarityFixture, DoubleLenghtDiffTest)
 {
-	SimilarityChecker sc;
-	int actual = sc.getSimilarity("A", "BB");
-
-	EXPECT_EQ(0, actual);
+	EXPECT_EQ(0, getSimilarityScore("A", "BB"));
 }
 
-TEST(TS1, TC3)
+TEST_F(SimilarityFixture, SmallDiffTest1)
 {
-	SimilarityChecker sc;
-	int actual = sc.getSimilarity("AAABB", "BAA");
-
-	EXPECT_EQ(20, actual);
+	EXPECT_EQ(20, getSimilarityScore("AAABB", "BAA"));
 }
 
-TEST(TS1, TC4)
+TEST_F(SimilarityFixture, SmallDiffTest2)
 {
-	SimilarityChecker sc;
-	int actual = sc.getSimilarity("AA", "AAE");
-
-	EXPECT_EQ(30, actual);
+	EXPECT_EQ(30, getSimilarityScore("AA", "AAE"));
 }
 
 int main() {
